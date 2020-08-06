@@ -1,7 +1,6 @@
 import React from 'react';
+import NewsCardsContainer from '../NewsCards/NewsCardsContainer';
 
 export const Home = (props) => {
-    return (
-        <h2>HomePage</h2>
-    )
+    return <NewsCardsContainer />
 }
