@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getNews } from '../../redux/news-reducer';
+import { getNewsList } from '../../redux/news-list-reducer';
 import { NewsCards } from './NewsCards';
 
 class NewsCardsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getNews();
+        this.props.getNewsList();
     }
     
     render() {
@@ -16,8 +16,8 @@ class NewsCardsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        newsList: state.newsPage.newsList
+        newsList: state.newsListPage.newsList
     }
 }
 
-export default connect(mapStateToProps, { getNews })(NewsCardsContainer);
+export default connect(mapStateToProps, { getNewsList })(NewsCardsContainer);

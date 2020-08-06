@@ -1,17 +1,17 @@
-import { grechApi } from "../api/api";
+import { newsApi } from "../api/api";
 
 const SET_NEWS = 'SET_NEWS';
 
 let initialState = {
-    newsList: []
+    news: [],
 }
 
-const newsReducer = (state = initialState, action) => {
+const newsPageReducer = (state = initialState, action) => {
     switch(action.type) {
         case SET_NEWS :
             return {
                 ...state,
-                newsList: action.newsList
+                news: action.news
             }
             break;
         default:
@@ -19,14 +19,14 @@ const newsReducer = (state = initialState, action) => {
     }
 }
 
-export const setNews = (newsList) => ({type: SET_NEWS, newsList});
+export const setNews = (news) => ({type: SET_NEWS, news});
 
-export const getNews = () => {
+export const getNews = (idNews) => {
     return (dispatch) => {
-        grechApi.getNews().then(data => {
+        newsApi.getNews(idNews).then(data => {
             dispatch(setNews(data));
         });
     }
 }
 
-export default newsReducer;
+export default newsPageReducer;
