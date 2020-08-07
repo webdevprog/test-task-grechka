@@ -13,7 +13,6 @@ const newsPageReducer = (state = initialState, action) => {
                 ...state,
                 news: action.news
             }
-            break;
         default:
             return state;
     }

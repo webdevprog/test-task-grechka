@@ -5,7 +5,7 @@ import { NavbarSite } from './Navbar/Navbar';
 
 export const Header = (props) => {
     return (
-        <div className="header">
+        <div className="header mb-5">
             <Container>
                 <NavbarSite />
             </Container>
