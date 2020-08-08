@@ -24,9 +24,26 @@ export const newsApi = {
     },
 
     getNews(idNews) {
-        return grechApi.get(`news/${idNews}`).then(response => {
+        return grechApi.get(`news/${idNews}`).then((news) => {
+            if (news.data) {
+                return profileApi.getProfile(news.data.authorId).then((author) => {
+                    return { 
+                        ...news.data, 
+                        datetime: news.data.datetime.replace(regexDate, "$3.$2.$1 $4"),
+                        authorName: `${author.firstName} ${author.lastName}`
+                     };
+                });
+            }
+        });
+    }
+}
+
+
+export const profileApi = {
+    getProfile(profileID) {
+        return grechApi.get(`user/${profileID}`).then(response => {
             if (response.data) {
-                return { ...response.data, datetime: response.data.datetime.replace(regexDate, "$3.$2.$1 $4") };
+                return response.data;
             }
         });
     }

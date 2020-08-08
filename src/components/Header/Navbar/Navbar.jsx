@@ -11,9 +11,6 @@ export const NavbarSite = (props) => {
                     <Nav.Link href="/" >Home</Nav.Link>
                     <Nav.Link href="/news" >News</Nav.Link>
                 </Nav>
-                <Nav>
-                    <Nav.Link href="/author">Authors</Nav.Link>
-                </Nav>
             </Navbar.Collapse>
         </Navbar>
     )
