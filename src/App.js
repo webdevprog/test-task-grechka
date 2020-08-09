@@ -22,7 +22,7 @@ const App = (props) => {
               <Route path="/" component={Home} exact />
               <Route path="/news" component={() => <NewsCardsContainer />} exact />
               <Route path="/news/:newsId" component={() => <NewsPageContainer />} exact />
-              <Route path="/profile/:profileId" component={() => <Profile />} />
+              <Route path="/profile/:profileId" component={() => <Profile />} exact />
               <Route component={NotFoundPage} />
             </Switch>
           </Container>
