@@ -12,9 +12,11 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <h1>{this.props.profile.firstName ? this.props.profile.firstName : 'test' }</h1>
+            <div>
+                <h1>{this.props.profile !== null ? this.props.profile.firstName +' '+ this.props.profile.lastName : 'test'}</h1>
+            </div>
         )
-    }
+    }   
 }
 
 let mapStateToProps = (state) => {

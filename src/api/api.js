@@ -27,12 +27,34 @@ export const newsApi = {
         return grechApi.get(`news/${idNews}`).then((news) => {
             if (news.data) {
                 return profileApi.getProfile(news.data.authorId).then((author) => {
-                    return { 
-                        ...news.data, 
+                    return {
+                        ...news.data,
                         datetime: news.data.datetime.replace(regexDate, "$3.$2.$1 $4"),
                         authorName: `${author.firstName} ${author.lastName}`
-                     };
+                    };
                 });
+            }
+        });
+    },
+
+    getComments(id) {
+        return grechApi.get(`comments/${id}`).then(response => {
+            if (response.data) {
+                let comments = response.data.map(item => {
+                        item.datetime = item.datetime.replace(regexDate, "$3.$2.$1 $4");
+                        return item;
+                    }),
+                    commentsLength = comments.length,
+                    parent = comments.filter(item => parseInt(item.parentId) === parseInt(id)),
+                    child = comments.filter(item => item.parentId !== id),
+                    commentsTree = [];
+
+                parent.forEach(parentItem => {
+                    parentItem.children = [...child.filter(childItem => childItem.parentId === parentItem.id)];
+                    commentsTree.push(parentItem);
+                });
+
+                return {commentsLength, commentsTree};
             }
         });
     }
