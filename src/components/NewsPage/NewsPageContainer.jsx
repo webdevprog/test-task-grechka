@@ -4,6 +4,7 @@ import { getNews, getComments } from '../../redux/news-page-reducer';
 import { NewsPage } from './NewsPage';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
+import { NotFoundPage } from '../common/NotFoundPage/NotFoundPage';
 
 class NewsPageContainer extends React.Component {
 
@@ -13,10 +14,14 @@ class NewsPageContainer extends React.Component {
     }
 
     render() {
-        return <NewsPage
-            news={this.props.news}
-            comments={this.props.comments} totalComments={this.props.totalComments}
-        />
+        if (this.props.news.length === 0) return <NotFoundPage />
+        return <div>
+            <NewsPage
+                news={this.props.news}
+                comments={this.props.comments} totalComments={this.props.totalComments}
+            />
+        </div>
+
     }
 }
 

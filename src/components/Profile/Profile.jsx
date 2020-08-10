@@ -3,6 +3,7 @@ import { getProfile } from '../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { NotFoundPage } from '../common/NotFoundPage/NotFoundPage';
 
 class Profile extends React.Component {
 
@@ -11,9 +12,10 @@ class Profile extends React.Component {
     }
 
     render() {
+        if (this.props.profile === null) return <NotFoundPage />
         return (
             <div>
-                <h1>{this.props.profile !== null ? this.props.profile.firstName +' '+ this.props.profile.lastName : 'test'}</h1>
+                <h1>{this.props.profile !== null && `${this.props.profile.firstName} ${this.props.profile.lastName}`}</h1>
             </div>
         )
     }   
