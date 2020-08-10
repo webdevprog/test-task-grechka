@@ -8,7 +8,7 @@ export const NewsCards = (props) => {
         <Row>
             {
                 props.news.map(item => (
-                    <Col lg="4" className="mb-5" key={item.id}>
+                    <Col lg="4" sm="6" className="mb-5" key={item.id}>
                         <Card>
                             <Card.Img className="card__img" variant="top" src={item.image} />
                             <Card.Body>

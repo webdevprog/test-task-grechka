@@ -17,7 +17,7 @@ export const NewsPage = (props) => {
                 <div className="page-news__info">
                     <div>
                         <FontAwesomeIcon icon={faClock} />
-                        <time datetime={props.news.datetime}>{props.news.datetime}</time>
+                        <time>{props.news.datetime}</time>
                     </div>
                     <div>
                         <FontAwesomeIcon icon={faUser} />
