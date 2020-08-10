@@ -12,7 +12,7 @@ export const NewsCards = (props) => {
                         <Card>
                             <Card.Img className="card__img" variant="top" src={item.image} />
                             <Card.Body>
-                                <NavLink to={`news/${item.id}`}><Card.Title>{item.title}</Card.Title></NavLink>
+                                <NavLink to={`new/${item.id}`}><Card.Title>{item.title}</Card.Title></NavLink>
                                 <Card.Text>{item.datetime}</Card.Text>
                             </Card.Body>
                         </Card>
